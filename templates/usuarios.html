@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block titulo %}Usuarios | Sistema POS{% endblock %}
+{% block contenido %}
+<a href="{{ url_for('dashboard') }}" class="muted">← Volver al panel</a>
+
+<div class="card">
+  <h1>👥 Usuarios</h1>
+  <table>
+    <tr><th>Usuario</th><th>Nombre</th><th>Rol</th></tr>
+    {% for u, d in usuarios.items() %}
+    <tr><td>{{ u }}</td><td>{{ d.nombre }}</td><td>{{ d.rol }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+
+<div class="card">
+  <h2>Bitácora de accesos (últimos 15)</h2>
+  <table>
+    <tr><th>Fecha</th><th>Usuario</th><th>Evento</th><th>IP</th></tr>
+    {% for b in bitacora %}
+    <tr><td>{{ b.fecha }}</td><td>{{ b.usuario }}</td><td>{{ b.evento }}</td><td>{{ b.ip }}</td></tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

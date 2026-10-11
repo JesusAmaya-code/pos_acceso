@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block titulo %}Acceso denegado{% endblock %}
+{% block contenido %}
+<div class="card login">
+  <h1>⛔ Acceso denegado</h1>
+  <p>Tu rol no tiene permiso para entrar a este módulo.</p>
+  <a href="{{ url_for('dashboard') }}" class="btn">Volver al panel</a>
+</div>
+{% endblock %}

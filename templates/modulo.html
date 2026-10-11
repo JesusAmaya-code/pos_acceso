@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block titulo %}{{ modulo.titulo }} | Sistema POS{% endblock %}
+{% block contenido %}
+<a href="{{ url_for('dashboard') }}" class="muted">← Volver al panel</a>
+<div class="card">
+  <h1>{{ modulo.icono }} {{ modulo.titulo }}</h1>
+  <p>{{ modulo.desc }}</p>
+  <p class="muted">Módulo de demostración: aquí iría la funcionalidad real.</p>
+</div>
+{% endblock %}

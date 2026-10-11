@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block titulo %}Panel | Sistema POS{% endblock %}
+{% block contenido %}
+<h1>Bienvenido, {{ session.nombre }}</h1>
+<p class="muted">Estos son los módulos disponibles para tu rol.</p>
+
+<div class="grid">
+  {% for clave, m in modulos.items() %}
+  <a class="card modulo" href="{{ url_for(clave) }}">
+    <div class="icono">{{ m.icono }}</div>
+    <h2>{{ m.titulo }}</h2>
+    <p>{{ m.desc }}</p>
+  </a>
+  {% endfor %}
+</div>
+{% endblock %}

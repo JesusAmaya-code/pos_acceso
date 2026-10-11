@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block titulo %}Sistema POS{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  {% if session.usuario %}
+  <header class="topbar">
+    <a href="{{ url_for('dashboard') }}" class="brand">🧾 Sistema POS</a>
+    <div class="user">
+      <span>{{ session.nombre }} <small class="badge">{{ session.rol }}</small></span>
+      <a href="{{ url_for('logout') }}" class="btn btn-sm">Cerrar sesión</a>
+    </div>
+  </header>
+  {% endif %}
+
+  <main class="container">
+    {% with mensajes = get_flashed_messages(with_categories=true) %}
+      {% for categoria, mensaje in mensajes %}
+        <div class="alert {{ categoria }}">{{ mensaje }}</div>
+      {% endfor %}
+    {% endwith %}
+    {% block contenido %}{% endblock %}
+  </main>
+</body>
+</html>
